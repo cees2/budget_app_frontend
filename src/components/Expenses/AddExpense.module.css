@@ -1,0 +1,22 @@
+.addExpenseWrapper {
+  width: 50%;
+  margin: 5rem auto 0;
+  background-color: var(--backgroundColor);
+  border: 2px solid white;
+  padding: 1rem;
+}
+
+section.newExpenseSection {
+  width: 50%;
+  margin: 0 auto;
+}
+
+select.expAddCategory {
+  border-radius: 8px;
+  outline: none;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--lightGreen);
+  color: white;
+  width: 100%;
+  text-align: center;
+}

@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Redirect, Switch, Route } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import Authentication from "./pages/Authentication";
+import Home from "./pages/Home";
+import Expenses from "./pages/Expenses";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/authentication">
+          <Authentication />
+        </Route>
+        <Route path="/expenses">
+          <Expenses />
+        </Route>
+        <Route path="*">
+          <p style={{ textAlign: "center", marginTop: "20px" }}>
+            Could not find that url
+          </p>
+        </Route>
+      </Switch>
+    </Layout>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,17 @@
+.signUpWrapper {
+  width: 50%;
+  margin: 5rem auto 0;
+  background-color: #fff;
+  background-color: inherit;
+  border: 2px solid white;
+  padding: 2rem;
+}
+
+section.signUpSection {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.singleInput label {
+  display: block;
+}

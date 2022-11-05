@@ -1,0 +1,17 @@
+.actionResultWrapper {
+  width: 30%;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background-color: #fff;
+  transition: 0.5s;
+}
+
+.active {
+  top: 50%;
+}
+
+.actionResultWrapper img {
+  width: 30px;
+  height: 30px;
+}

@@ -1,0 +1,31 @@
+.appMainHeader {
+  background-color: var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.appMainHeader img {
+  width: 100px;
+  height: 40px;
+}
+
+.appMainHeader a {
+  text-decoration: none;
+  color: white;
+}
+
+.headerList {
+  list-style-type: none;
+  display: flex;
+}
+
+.headerList a {
+  margin-right: 1rem;
+}
+
+.headerList li:last-child {
+  margin: 0;
+}
