@@ -1,5 +1,10 @@
 .expensesListWrapper {
   width: 80%;
-  margin: 5rem auto 0;
-  background-color: var(--lightGreen);
+  height: calc(100vh - 2 * var(--headerHeight));
+  margin: calc(var(--headerHeight) / 2) auto 0;
+  background-color: inherit;
+}
+
+ul.expensesList {
+  list-style-type: none;
 }

@@ -1,0 +1,24 @@
+.expenseItemWrapper {
+  background-color: rgb(173, 173, 173);
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: var(--greenBlue);
+  display: flex;
+  flex-direction: column;
+}
+
+section.expenseInfoWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+button.deleteExpenseButton {
+  align-self: center;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(221, 62, 62);
+  color: white;
+  border: none;
+}

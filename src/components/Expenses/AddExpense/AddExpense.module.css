@@ -11,6 +11,10 @@ section.newExpenseSection {
   margin: 0 auto;
 }
 
+div.newExpenseSingleInput {
+  margin-top: 1rem;
+}
+
 select.expAddCategory {
   border-radius: 8px;
   outline: none;

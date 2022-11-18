@@ -5,6 +5,7 @@
   align-items: center;
   padding: 1rem 2rem;
   color: white;
+  max-height: var(--headerHeight);
 }
 
 .appMainHeader img {
@@ -24,6 +25,12 @@
 
 .headerList a {
   margin-right: 1rem;
+}
+
+.headerList a li {
+  border: 1px solid #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
 }
 
 .headerList li:last-child {

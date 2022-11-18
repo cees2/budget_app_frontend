@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AddExpense from "../components/Expenses/AddExpense";
+import AddExpense from "../components/Expenses/AddExpense/AddExpense";
 import AllExpenses from "../components/Expenses/ExpensesList/AllExpenses";
 import ExpensesInfo from "../components/Expenses/ExpensesInfo";
 

@@ -9,7 +9,7 @@ const MainHeader = () => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
-  const removeToken = () => dispatch(authActions.removeToken());
+  const logoutUser = () => dispatch(authActions.logoutUser());
 
   return (
     <header className={classes.appMainHeader}>
@@ -33,7 +33,11 @@ const MainHeader = () => {
             <li>Expenses info</li>
           </Link>
         )}
-        {token && <li onClick={removeToken}>Log out</li>}
+        {token && (
+          <Link to="/home">
+            <li onClick={logoutUser}>Log out</li>
+          </Link>
+        )}
         {!token && (
           <Link to="/authentication/login">
             <li>Log in</li>

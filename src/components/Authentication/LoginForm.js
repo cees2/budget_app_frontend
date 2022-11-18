@@ -35,8 +35,9 @@ const LoginForm = () => {
           password,
         },
       });
-
-      dispatch(authActions.setToken(data.token));
+      dispatch(
+        authActions.loginUser({ token: data.token, userId: data.data.user._id })
+      );
       history.replace("/home");
     } catch (err) {
       activate();
