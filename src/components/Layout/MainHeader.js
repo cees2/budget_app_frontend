@@ -34,6 +34,11 @@ const MainHeader = () => {
           </Link>
         )}
         {token && (
+          <Link to="/expenses/budget-plans">
+            <li>Budget plans</li>
+          </Link>
+        )}
+        {token && (
           <Link to="/home">
             <li onClick={logoutUser}>Log out</li>
           </Link>

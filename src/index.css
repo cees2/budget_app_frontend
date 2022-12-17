@@ -19,6 +19,7 @@
   --lightGreen: #038c73;
   --greenBlue: #36bfb1;
   --bright: #f2e3d5;
+  --errorRed: rgb(219, 0, 0);
 
   --headerHeight: 4rem;
 }

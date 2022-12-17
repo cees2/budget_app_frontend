@@ -1,8 +1,10 @@
 .expensesListWrapper {
-  width: 80%;
+  width: 60%;
   height: calc(100vh - 2 * var(--headerHeight));
   margin: calc(var(--headerHeight) / 2) auto 0;
   background-color: inherit;
+  box-shadow: none;
+  /* overflow-y: scroll; */
 }
 
 ul.expensesList {

@@ -24,3 +24,8 @@ select.expAddCategory {
   width: 100%;
   text-align: center;
 }
+
+.successMessage a {
+  color: var(--greenBlue);
+  text-decoration: none;
+}

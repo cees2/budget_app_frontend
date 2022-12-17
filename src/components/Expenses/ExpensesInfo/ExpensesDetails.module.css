@@ -1,0 +1,67 @@
+.expInfoWrapper {
+  width: 80%;
+  margin: 5rem auto 0;
+  background-color: var(--backgroundColor);
+  border: none;
+}
+
+.expInfoHeader {
+  padding: 1rem;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dateInput {
+  width: 0%;
+}
+
+.expInfoHeader section.dateWrapper {
+  width: 50%;
+  border-right: 1px solid white;
+}
+
+.headersCaption {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+div.mainContentWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+section.categoryPercentageWrapper {
+  flex-basis: 30%;
+}
+
+section.expensesValueOnDate {
+  flex-basis: 50%;
+}
+
+.expensesValuesChart {
+  width: 100%;
+}
+
+div.peroidOfTimeNavigationWrapper {
+  display: flex;
+  align-items: center;
+  background-color: rgb(20, 20, 20);
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper img {
+  width: 10px;
+  height: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper img:first-child {
+  margin-right: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper img:last-child {
+  margin-left: 10px;
+}

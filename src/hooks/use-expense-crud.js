@@ -35,14 +35,13 @@ const useExpenseCrud = () => {
   };
 
   const deleteExpense = async (expenseId) => {
-    const data = await sendRequest({
+    await sendRequest({
       url: `/users/${userId}/expenses/${expenseId}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return data;
   };
 
   return {
