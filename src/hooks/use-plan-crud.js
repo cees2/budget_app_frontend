@@ -23,7 +23,7 @@ const usePlanCrud = () => {
       body: {
         name: planName,
         priority: planPriority,
-        completed: planStatus,
+        status: planStatus,
       },
       headers: {
         "Content-Type": "application/json",

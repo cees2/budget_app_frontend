@@ -44,7 +44,7 @@ const AllExpenses = () => {
       {modalIsVisible &&
         ReactDOM.createPortal(
           <ConfirmationModal
-            message="Czy na pewno chcesz usunąć ten wydatek?"
+            message="You are about to delete this expense"
             onAccept={acceptDeletionHandler}
             onReject={rejectDeletionHandler}
             visible={modalIsVisible}

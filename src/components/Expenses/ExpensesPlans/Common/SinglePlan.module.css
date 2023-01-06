@@ -1,7 +1,7 @@
 li.plansListItem {
   background-color: var(--green);
   width: 75%;
-  margin: 1rem auto 0;
+  margin: 0 auto 1rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -12,6 +12,11 @@ div.plansListItemContent,
 div.plansButtons {
   display: flex;
   justify-content: space-between;
+}
+
+div.planInfos {
+  flex-basis: 50%;
+  word-break: break-all;
 }
 
 div.plansListItemContent {
@@ -50,4 +55,8 @@ button.completedPlanButton {
 button.deletePlanButton:hover,
 button.completedPlanButton:hover {
   cursor: pointer;
+}
+
+button.singleButton {
+  justify-content: center;
 }

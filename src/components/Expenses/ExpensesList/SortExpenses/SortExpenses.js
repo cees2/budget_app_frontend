@@ -65,7 +65,7 @@ const SortExpenses = (props) => {
         >
           <option>Date</option>
           <option>Alphabet</option>
-          <option>Value</option>
+          {/* <option>Value</option> */}
           <option>Name</option>
         </select>
         <img

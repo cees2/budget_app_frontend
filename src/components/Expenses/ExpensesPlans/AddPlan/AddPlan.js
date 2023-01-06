@@ -15,7 +15,6 @@ const AddPlan = () => {
   const dispatch = useDispatch();
   const { createPlan } = usePlanCrud();
   const planNameInput = useRef();
-  const planPriorityInput = useRef();
   const priorityChangeHandler = (selectedInput) => {
     setPriority(selectedInput);
   };
@@ -25,7 +24,7 @@ const AddPlan = () => {
     const res = await createPlan(
       planNameInput?.current?.value,
       priority,
-      false
+      "Active"
     );
     const updatedPlans = [...plans, { ...res.data.createdPlan }];
     dispatch(plansActions.setPlans(updatedPlans));

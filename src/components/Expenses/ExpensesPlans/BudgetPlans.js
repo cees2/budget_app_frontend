@@ -4,6 +4,7 @@ import { Route, Switch, Link, Redirect } from "react-router-dom";
 import AddPlan from "./AddPlan/AddPlan";
 import CompletedPlans from "./CompletedPlans/CompletedPlans";
 import SeePlans from "./SeePlans/SeePlans";
+import IncompletedPlans from "./IncompletedPlans/IncompletedPlans";
 
 const BudgetPlans = () => {
   return (
@@ -19,6 +20,9 @@ const BudgetPlans = () => {
           <Link to={`/expenses/budget-plans/completed-plans`}>
             <li>CompletedPlans</li>
           </Link>
+          <Link to={`/expenses/budget-plans/incompleted-plans`}>
+            <li>IncompletedPlans</li>
+          </Link>
         </ul>
       </nav>
       <Switch>
@@ -30,6 +34,9 @@ const BudgetPlans = () => {
         </Route>
         <Route path="/expenses/budget-plans/completed-plans">
           <CompletedPlans />
+        </Route>
+        <Route path="/expenses/budget-plans/incompleted-plans">
+          <IncompletedPlans />
         </Route>
         <Route path="/expenses/budget-plans/see-plans">
           <SeePlans />

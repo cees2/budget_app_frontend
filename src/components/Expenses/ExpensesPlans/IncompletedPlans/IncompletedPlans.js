@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import classes from "./SeePlans.module.css";
+import classes from "./IncompletedPlans.module.css";
 import usePlanCrud from "../../../../hooks/use-plan-crud";
 import { plansActions } from "../../../../store/PlanSlice";
 import SinglePlan from "../Common/SinglePlan";
 import Header from "../../../UI/Header";
 
-const SeePlans = () => {
+const IncompletedPlans = () => {
   const { getPlans } = usePlanCrud();
   const plans = useSelector((state) => state.plans.plans);
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const SeePlans = () => {
   };
 
   const content = plans.map((plan, i) => {
-    return plan.status === "Active" ? (
+    return plan.status === "Incompleted" ? (
       <SinglePlan plan={plan} key={i} onCRUD={planCRUDHandler} />
     ) : (
       ""
@@ -34,8 +34,8 @@ const SeePlans = () => {
 
   return (
     <div className={classes.currentPlansWrapper}>
-      <Header class={classes.seePlansHeader}>Plans list</Header>
-      <ul className={classes.plansList}>
+      <Header class={classes.incompletedHeader}>Incompleted plans</Header>
+      <ul>
         {content.every((c) => c === "") ? (
           <h5 style={{ textAlign: "center" }}>No plans found. Add some</h5>
         ) : (
@@ -46,4 +46,4 @@ const SeePlans = () => {
   );
 };
 
-export default SeePlans;
+export default IncompletedPlans;

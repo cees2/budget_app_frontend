@@ -29,7 +29,6 @@ const SingleExpense = (props) => {
       >
         Delete Expense
       </button>
-      {/* do poprawy: wywalic do komponentu button? */}
     </li>
   );
 };

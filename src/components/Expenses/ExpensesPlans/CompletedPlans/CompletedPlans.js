@@ -4,6 +4,7 @@ import classes from "./CompletedPlans.module.css";
 import usePlanCrud from "../../../../hooks/use-plan-crud";
 import { plansActions } from "../../../../store/PlanSlice";
 import SinglePlan from "../Common/SinglePlan";
+import Header from "../../../UI/Header";
 
 const CompletedPlans = () => {
   const { getPlans } = usePlanCrud();
@@ -23,16 +24,23 @@ const CompletedPlans = () => {
     dispatch(plansActions.setPlans(res.data.plans));
   };
 
+  const content = plans.map((plan, i) => {
+    return plan.status === "Completed" ? (
+      <SinglePlan plan={plan} key={i} onCRUD={planCRUDHandler} />
+    ) : (
+      ""
+    );
+  });
+
   return (
     <div className={classes.currentPlansWrapper}>
+      <Header class={classes.completedHeader}>Completed plans</Header>
       <ul>
-        {plans.map((plan, i) => {
-          return !plan.completed ? (
-            ""
-          ) : (
-            <SinglePlan plan={plan} key={i} onCRUD={planCRUDHandler} />
-          );
-        })}
+        {content.every((c) => c === "") ? (
+          <h5 style={{ textAlign: "center" }}>No plans found. Add some</h5>
+        ) : (
+          content
+        )}
       </ul>
     </div>
   );
