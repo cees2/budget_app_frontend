@@ -21,22 +21,20 @@ const BudgetPlans = () => {
           </Link>
         </ul>
       </nav>
-      <div className={classes.budgetPlansContentWrapper}>
-        <Switch>
-          <Route path="/expenses/budget-plans/" exact>
-            <Redirect to="/expenses/budget-plans/see-plans" />
-          </Route>
-          <Route path="/expenses/budget-plans/add-plan">
-            <AddPlan />
-          </Route>
-          <Route path="/expenses/budget-plans/completed-plans">
-            <CompletedPlans />
-          </Route>
-          <Route path="/expenses/budget-plans/see-plans">
-            <SeePlans />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/expenses/budget-plans/" exact>
+          <Redirect to="/expenses/budget-plans/see-plans" />
+        </Route>
+        <Route path="/expenses/budget-plans/add-plan">
+          <AddPlan />
+        </Route>
+        <Route path="/expenses/budget-plans/completed-plans">
+          <CompletedPlans />
+        </Route>
+        <Route path="/expenses/budget-plans/see-plans">
+          <SeePlans />
+        </Route>
+      </Switch>
     </section>
   );
 };

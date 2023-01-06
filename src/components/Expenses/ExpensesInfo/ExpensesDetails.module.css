@@ -10,11 +10,22 @@
   border-bottom: 1px solid white;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.dateInput {
-  width: 0%;
+button.submitDateRange {
+  padding: 4px 12px;
+  margin-top: 7.5px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  background-color: var(--greenBlue);
+  transition: 0.25s;
+}
+
+button.submitDateRange:hover {
+  cursor: pointer;
+  background-color: var(--green);
 }
 
 .expInfoHeader section.dateWrapper {
@@ -29,12 +40,28 @@
 
 div.mainContentWrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 1rem;
   align-items: flex-end;
+}
+
+.peroidOfTimeSelectable {
+  border-radius: 6px;
+  outline: none;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--lightGreen);
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
 }
 
 section.categoryPercentageWrapper {
   flex-basis: 30%;
+}
+
+section.expensesOptionsWrapper {
+  margin-left: 1rem;
 }
 
 section.expensesValueOnDate {
@@ -45,18 +72,26 @@ section.expensesValueOnDate {
   width: 100%;
 }
 
+h4.selectPeroidOfTime {
+  margin-bottom: 0.5rem;
+}
+
 div.peroidOfTimeNavigationWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(20, 20, 20);
-  padding: 0.25rem 0.5rem;
-  border-radius: 10px;
+  background-color: var(--green);
+  border-radius: 6px;
 }
 
 div.peroidOfTimeNavigationWrapper img {
   width: 10px;
   height: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper div:hover {
+  cursor: pointer;
+  background-color: var(--greenBlue);
 }
 
 div.peroidOfTimeNavigationWrapper img:first-child {
@@ -65,4 +100,25 @@ div.peroidOfTimeNavigationWrapper img:first-child {
 
 div.peroidOfTimeNavigationWrapper img:last-child {
   margin-left: 10px;
+}
+
+div.arrow {
+  display: flex;
+  padding: 0.5rem 0;
+}
+
+div.arrow:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+div.arrow:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+p.expensesInTotal {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-weight: 800;
 }

@@ -153,7 +153,11 @@ const ExpensesDetails = () => {
               wrapperClassName={classes.dateInput}
             />
           </div>
-          <button type="submit" onClick={submitDateHandler}>
+          <button
+            type="submit"
+            onClick={submitDateHandler}
+            className={classes.submitDateRange}
+          >
             Submit
           </button>
         </section>
@@ -162,16 +166,19 @@ const ExpensesDetails = () => {
           <Selectable
             options={["Yearly", "Monthly", "Daily"]}
             onSelectChange={changePeroidOfTimeHandler}
+            customClass={classes.peroidOfTimeSelectable}
           />
           {expensesChartData.selectedTypeOfPeroid && (
             <>
-              <h4>Select {expensesChartData.selectedTypeOfPeroid}</h4>
+              <h4 className={classes.selectPeroidOfTime}>
+                Select {expensesChartData.selectedTypeOfPeroid}
+              </h4>
               <div className={classes.peroidOfTimeNavigationWrapper}>
-                <div onClick={previousPeroid}>
+                <div className={classes.arrow} onClick={previousPeroid}>
                   <img src={lessThan} alt="Previous" />
                 </div>
                 <h5>{expensesChartData.dateInformation}</h5>
-                <div onClick={nextPeroid}>
+                <div className={classes.arrow} onClick={nextPeroid}>
                   <img src={greaterThan} alt="Next" />
                 </div>
               </div>
@@ -182,9 +189,6 @@ const ExpensesDetails = () => {
       <div className={classes.mainContentWrapper}>
         <section className={classes.categoryPercentageWrapper}>
           <Doughnut data={doughnutData} options={doughnutOptions} />
-          <p>
-            Total value of expenses: <span>{expensesTotalValue}</span>
-          </p>
         </section>
         <section className={classes.expensesValueOnDate}>
           <Chart
@@ -194,6 +198,9 @@ const ExpensesDetails = () => {
           />
         </section>
       </div>
+      <p className={classes.expensesInTotal}>
+        Total value of expenses: <span>{expensesTotalValue}</span>
+      </p>
     </>
   );
 };

@@ -28,8 +28,6 @@ const AllExpenses = () => {
     setIdOfElementToBeDeleted(null);
   };
 
-  console.log("expenses", expenses);
-
   const rejectDeletionHandler = () => setModalIsVisible(false);
 
   const showModalHandler = (id) => {

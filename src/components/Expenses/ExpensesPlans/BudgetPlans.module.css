@@ -25,3 +25,7 @@ nav.budgetPlansNav ul li {
   border-radius: 12px;
   line-height: 16px;
 }
+
+nav.budgetPlansNav ul li:hover {
+  background-color: var(--greenBlue);
+}

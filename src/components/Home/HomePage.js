@@ -4,6 +4,7 @@ import analysisGraph from "../../images/analysis_graph.svg";
 import copyright from "../../images/copyright.svg";
 import linkedin from "../../images/linkedin.svg";
 import github from "../../images/github.svg";
+import { Link } from "react-router-dom";
 
 const HomePage = (props) => {
   const description = props.loggedIn ? (
@@ -63,12 +64,20 @@ const HomePage = (props) => {
       </section>
       <footer className={classes.homeFooter}>
         <div className={classes.socialMedias}>
-          <img src={linkedin} alt="linkedin" />
-          <img src={github} alt="github" />
+          <a
+            href="https://www.linkedin.com/in/damian-mirek-979b0623b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={linkedin} alt="linkedin" />
+          </a>
+          <a href="https://github.com/cees2" target="_blank" rel="noreferrer">
+            <img src={github} alt="github" />
+          </a>
         </div>
         <div className={classes.copyrightWrapper}>
           <img src={copyright} alt="copyright" />
-          <p>Damian Mirek 2022</p>
+          <p>Damian Mirek 2023</p>
         </div>
       </footer>
     </>

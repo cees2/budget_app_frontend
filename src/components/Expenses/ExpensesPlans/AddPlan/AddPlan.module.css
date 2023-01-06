@@ -1,0 +1,28 @@
+div.addPlanWrapper {
+  width: 50%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.prioritySelectable {
+  border-radius: 8px;
+  outline: none;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--lightGreen);
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.singleInput {
+  margin-top: 1rem;
+}
+
+.singleInput label {
+  margin-bottom: 0.5rem;
+}
+
+h4.addNewHeader {
+  text-align: center;
+}

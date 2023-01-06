@@ -19,7 +19,6 @@ const CompletedPlans = () => {
   }, []);
 
   const planCRUDHandler = async () => {
-    console.log("exec");
     const res = await getPlans();
     dispatch(plansActions.setPlans(res.data.plans));
   };

@@ -6,21 +6,22 @@ import UserInput from "../../../UI/UserInput";
 import ActionResult from "../../../UI/ActionResult";
 import { useDispatch, useSelector } from "react-redux";
 import { plansActions } from "../../../../store/PlanSlice";
+import SubmitFormButton from "../../../UI/SubmitFormButton";
+import Header from "../../../UI/Header";
 
 const AddPlan = () => {
   const [priority, setPriority] = useState("High");
   const plans = useSelector((state) => state.plans.plans);
   const dispatch = useDispatch();
-  console.log("plans", plans);
   const { createPlan } = usePlanCrud();
   const planNameInput = useRef();
+  const planPriorityInput = useRef();
   const priorityChangeHandler = (selectedInput) => {
     setPriority(selectedInput);
   };
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("tutaj", planNameInput.current.value);
     const res = await createPlan(
       planNameInput?.current?.value,
       priority,
@@ -31,19 +32,27 @@ const AddPlan = () => {
   };
 
   return (
-    <form onSubmit={formSubmitHandler}>
-      <div className={classes.singleInput}>
-        <UserInput inputRef={planNameInput} type="text" />
-      </div>
-      <div className={classes.singleInput}>
-        <label htmlFor="end_date">Priority</label>
-        <Selectable
-          options={["High", "Medium", "Low"]}
-          onSelectChange={priorityChangeHandler}
+    <div className={classes.addPlanWrapper}>
+      <Header>Add new plan</Header>
+      <form onSubmit={formSubmitHandler}>
+        <UserInput
+          htmlFor="planName"
+          label="Plan name"
+          id="planName"
+          type="text"
+          inputRef={planNameInput}
         />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+        <div className={classes.singleInput}>
+          <label htmlFor="end_date">Priority</label>
+          <Selectable
+            options={["High", "Medium", "Low"]}
+            onSelectChange={priorityChangeHandler}
+            customClass={classes.prioritySelectable}
+          />
+        </div>
+        <SubmitFormButton caption="Add" />
+      </form>
+    </div>
   );
 };
 
