@@ -7,6 +7,9 @@ const plansSlice = createSlice({
     setPlans(state, action) {
       state.plans = action.payload;
     },
+    clearPlans(state) {
+      state.plans = [];
+    },
   },
 });
 

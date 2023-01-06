@@ -6,7 +6,6 @@ import useExpenseCrud from "../../../hooks/use-expense-crud";
 import { Doughnut, Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
 import {
-  ARCH_COLORS,
   getExpenseDataOnPeroidOfTime,
   getTypeOfPeroidOfTime,
   expensesChartDataReducer,
@@ -45,8 +44,6 @@ const ExpensesDetails = () => {
   const expensesTotalValue = getTotalSumOfExpenses(expenses);
 
   ChartJS.register(...registerables);
-
-  console.log(categoriesPercentage);
 
   useEffect(() => {
     if (!expenses.length) {
@@ -90,7 +87,6 @@ const ExpensesDetails = () => {
     doughnutData = {
       labels: Object.keys(categoriesPercentage),
       datasets: [{ data: Object.values(categoriesPercentage), borderWidth: 3 }],
-      // backgroundColor: ARCH_COLORS,
     };
 
   const doughnutOptions = {

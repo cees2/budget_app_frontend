@@ -44,7 +44,7 @@ const SignUpForm = () => {
         },
       });
       dispatch(
-        authActions.loginUser({ token: data.token, userId: data.user._id })
+        authActions.loginUser({ token: data.token, userId: data.data.user._id })
       );
       history.replace("/home");
     } catch (err) {

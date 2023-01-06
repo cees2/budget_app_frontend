@@ -5,6 +5,7 @@ const authSlice = createSlice({
   initialState: {
     token: localStorage.getItem("token"),
     userId: localStorage.getItem("userId"),
+    dropdownIsVisible: false,
   },
   reducers: {
     loginUser(state, action) {
@@ -18,6 +19,9 @@ const authSlice = createSlice({
       state.userId = "";
       localStorage.removeItem("userId");
       localStorage.removeItem("token");
+    },
+    toggleDropdown(state) {
+      state.dropdownIsVisible = !state.dropdownIsVisible;
     },
   },
 });

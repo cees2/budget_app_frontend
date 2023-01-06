@@ -1,3 +1,13 @@
+export const ARCH_COLORS = [
+  "#f2ac29",
+  "#b0e000",
+  "#43ff2e",
+  "#02ede1",
+  "#026ced",
+  "#8302ed",
+  "#22e071",
+];
+
 export const getCategoriesDataOnPeroid = (expenses, startDate, endDate) => {
   const categoriesPercentage = {};
   expenses?.forEach((expense) => {

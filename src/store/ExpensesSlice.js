@@ -7,6 +7,9 @@ const expensesSlice = createSlice({
     setExpenses(state, action) {
       state.expenses = action.payload;
     },
+    clearExpenses(state) {
+      state.expenses = [];
+    },
   },
 });
 

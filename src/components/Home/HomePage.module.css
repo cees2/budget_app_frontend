@@ -56,3 +56,16 @@ footer.homeFooter p {
   font-size: 17px;
   margin-left: 4px;
 }
+
+@media (max-width: 992px) {
+  section.homeSection img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  section.homeSection img {
+    display: none;
+  }
+}
