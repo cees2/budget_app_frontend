@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../UI/Card";
 import SingleExpense from "./SingleExpense";
 import classes from "./AllExpenses.module.css";
@@ -6,8 +6,7 @@ import useExpenseCrud from "../../../hooks/use-expense-crud";
 import ReactDOM from "react-dom";
 import ConfirmationModal from "../../UI/ConfirmationModal";
 import SortExpenses from "./SortExpenses/SortExpenses";
-import { useSelector, useDispatch } from "react-redux";
-import { expensesActions } from "../../../store/ExpensesSlice";
+import { useSelector } from "react-redux";
 
 const AllExpenses = () => {
   const expenses = useSelector((state) => state.expenses.expenses);
@@ -18,7 +17,7 @@ const AllExpenses = () => {
 
   useEffect(() => {
     getExpenses().then((data) => {
-      setUsersExpenses(data.data.expenses.reverse());
+      setUsersExpenses(data.data.expenses);
     });
   }, [expenses]);
 
