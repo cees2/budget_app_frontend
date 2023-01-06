@@ -1,0 +1,53 @@
+li.plansListItem {
+  background-color: var(--green);
+  width: 75%;
+  margin: 1rem auto 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+div.plansListItemContent,
+div.plansButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.plansListItemContent {
+}
+
+div.plansButtons {
+}
+
+h2.planName {
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+p.planPriority {
+  margin-bottom: 0.5rem;
+}
+
+p.planDate {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+button.deletePlanButton,
+button.completedPlanButton {
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(221, 62, 62);
+  color: white;
+  border: none;
+}
+
+button.completedPlanButton {
+  background-color: rgb(33, 179, 19);
+}
+
+button.deletePlanButton:hover,
+button.completedPlanButton:hover {
+  cursor: pointer;
+}

@@ -32,9 +32,11 @@ const HomePage = (props) => {
       </p>
       <p className={classes.homeDescriptionParagraph}>
         <b>Budget plans: </b> Based on expenses data you can make some
-        conclusions and plans. Let's assume 20% of past month expenses was
-        entertainment. Then You want to make plan for next month to lower it to
-        10%. After one month you can mark it as completed, failed, or just
+        conclusions and plans. When "Completed Plans", or "Incompleted Plans"
+        tab is selected first date is a creation date, second is date of
+        completion/incompletion. Let's assume 20% of past month expenses was
+        entertainment. Then You might want to make plan for next month to lower
+        it to 10%. After one month you can mark it as completed, failed, or just
         delete it.
       </p>
     </div>

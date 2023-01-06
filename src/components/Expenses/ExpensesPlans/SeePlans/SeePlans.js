@@ -25,7 +25,7 @@ const SeePlans = () => {
 
   return (
     <div className={classes.currentPlansWrapper}>
-      <ul>
+      <ul className={classes.plansList}>
         {plans.map((plan, i) => {
           return plan.completed ? (
             ""

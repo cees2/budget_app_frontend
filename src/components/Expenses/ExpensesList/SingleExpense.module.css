@@ -22,6 +22,10 @@ button.deleteExpenseButton {
   border: none;
 }
 
+button.deleteExpenseButton:hover {
+  cursor: pointer;
+}
+
 div.details h2.expenseName {
   margin-bottom: 1rem;
 }
