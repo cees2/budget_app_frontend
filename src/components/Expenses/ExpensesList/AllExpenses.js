@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Card from "../../UI/Card";
 import SingleExpense from "./SingleExpense";
 import classes from "./AllExpenses.module.css";
@@ -15,16 +15,12 @@ const AllExpenses = () => {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [usersExpenses, setUsersExpenses] = useState([]);
   const [idOfElementToBeDeleted, setIdOfElementToBeDeleted] = useState(null);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!expenses.length) {
-      getExpenses().then((data) => {
-        dispatch(expensesActions.setExpenses(data.data.expenses.reverse()));
-        setUsersExpenses(data.data.expenses);
-      });
-    } else setUsersExpenses(expenses);
-  }, []);
+    getExpenses().then((data) => {
+      setUsersExpenses(data.data.expenses.reverse());
+    });
+  }, [expenses]);
 
   const acceptDeletionHandler = async () => {
     deleteExpense(usersExpenses[idOfElementToBeDeleted]._id);
