@@ -29,3 +29,20 @@ select.expAddCategory {
   color: var(--greenBlue);
   text-decoration: none;
 }
+
+@media (max-width: 992px) {
+  .addExpenseWrapper {
+    width: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .addExpenseWrapper {
+    width: 100%;
+    border: none;
+  }
+  section.newExpenseSection {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

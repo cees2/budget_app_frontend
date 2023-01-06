@@ -61,6 +61,10 @@ footer.homeFooter p {
   section.homeSection img {
     width: 150px;
     height: 150px;
+    margin-right: 1rem;
+  }
+  section.homeSection {
+    height: calc(100vh - var(--headerHeight) - 2.05rem);
   }
 }
 

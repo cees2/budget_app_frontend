@@ -118,6 +118,10 @@ img.hamburgerMenu {
 }
 
 @media (max-width: 576px) {
+  .appMainHeader {
+    padding: 1rem 0;
+  }
+
   img.hamburgerMenu {
     display: inline-block;
     width: 25px;
