@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./SingleExpense.module.css";
-import { MONTHS } from "../ExpensesInfo/services/GetExpensesData";
+import { MONTHS } from "../ExpensesInfo/services/chartData";
 
 const SingleExpense = (props) => {
   const { category, createdAt, name, value, onDelete, id } = props;
@@ -16,7 +16,9 @@ const SingleExpense = (props) => {
       <section className={classes.expenseInfoWrapper}>
         <div className={classes.details}>
           <h2 className={classes.expenseName}>{name}</h2>
-          <p className={classes.expenseCategory}>{category}</p>
+          <p className={classes.expenseCategory}>{`${category
+            .slice(0, 1)
+            .toUpperCase()}${category.slice(1)}`}</p>
         </div>
         <div className={classes.valueInfo}>
           <h2 className={classes.price}>{`${value} zł`}</h2>

@@ -11,33 +11,31 @@ const HomePage = (props) => {
     <div className={classes.homeDescription}>
       <h2 className={classes.homeHeader}>Welcome!</h2>
       <p className={classes.homeDescriptionParagraph}>
-        Thank You for interesting in my app. I hope You will have fun while
-        using my app, and will have more control over bugdet. Below you can find
-        manual how to use this app:
+        Thank You for interesting in my app. I hope You will have fun , and will
+        have more control over bugdet. Below you can find manual:
       </p>
       <p className={classes.homeDescriptionParagraph}>
-        <b>Add expense: </b> You can add here your expenses. Every expense
-        <b>must</b> have a name, value and category
+        <b>Add expense: </b> Add here expenses. Every expense
+        <b> must</b> have a name, value and category
       </p>
       <p className={classes.homeDescriptionParagraph}>
-        <b>My expenses: </b> List of your expenses. If you created an expense by
+        <b>My expenses: </b> List of expenses. If you created an expense by
         mistake you can easily delete it. Every expense is described in details
         there. There is also a possibility to filter expenses list
       </p>
       <p className={classes.homeDescriptionParagraph}>
-        <b>Expenses info: </b> You can find two charst there: based on expenses
-        categories(doughnut chart) and expense values chart based on given
-        peroid of time. In case of doughnut chart you can specify date range you
-        want to see your expenses categories.
+        <b>Expenses info: </b> You can find two charts there: based on expenses
+        categories(doughnut chart) and expense values chart based on expenses
+        values. In both charts you can specify date range.
       </p>
       <p className={classes.homeDescriptionParagraph}>
         <b>Budget plans: </b> Based on expenses data you can make some
         conclusions and plans. When "Completed Plans", or "Incompleted Plans"
         tab is selected first date is a creation date, second is date of
-        completion/incompletion. Let's assume 20% of past month expenses was
-        entertainment. Then You might want to make plan for next month to lower
-        it to 10%. After one month you can mark it as completed, failed, or just
-        delete it.
+        completion/incompletion. Let's assume 20% of past month expenses were
+        entertainment expenses. Then You might want to make plan for next month
+        to lower it to 10%. After one month you can mark it as completed,
+        incompleted, or just delete it.
       </p>
     </div>
   ) : (

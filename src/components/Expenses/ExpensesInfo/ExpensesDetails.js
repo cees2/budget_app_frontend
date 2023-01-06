@@ -6,24 +6,27 @@ import useExpenseCrud from "../../../hooks/use-expense-crud";
 import { Doughnut, Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
 import {
-  getExpensesCategoriesPercentage,
-  getTotalSumOfExpenses,
   ARCH_COLORS,
   getExpenseDataOnPeroidOfTime,
   getTypeOfPeroidOfTime,
   expensesChartDataReducer,
-} from "./services/GetExpensesData";
+} from "./services/chartData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Selectable from "../../UI/Selectable";
 import lessThan from "../../../images/less_than.svg";
 import greaterThan from "../../../images/greater_than.svg";
-import { MONTHS } from "./services/GetExpensesData";
+import { MONTHS } from "./services/chartData";
+import {
+  getCategoriesDataOnPeroid,
+  getExpensesCategoriesPercentage,
+  getTotalSumOfExpenses,
+} from "./services/doughnutData";
 
 const ExpensesDetails = () => {
   const [expenses, setExpenses] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [expensesChartData, expensesDataDispatch] = useReducer(
     expensesChartDataReducer,
     {
@@ -33,12 +36,17 @@ const ExpensesDetails = () => {
       typeOfDateCoutner: 0,
     }
   );
+  const [categoriesPercentage, setCategoriesPercentage] = useState(
+    getExpensesCategoriesPercentage(expenses)
+  );
+  const [dateRandeError, setDateRangeError] = useState(false);
   const dispatch = useDispatch();
   const { getExpenses } = useExpenseCrud();
   const expensesTotalValue = getTotalSumOfExpenses(expenses);
-  const categoriesPercentage = getExpensesCategoriesPercentage(expenses);
 
   ChartJS.register(...registerables);
+
+  console.log(categoriesPercentage);
 
   useEffect(() => {
     if (!expenses.length) {
@@ -57,13 +65,33 @@ const ExpensesDetails = () => {
     if (startDate >= endDate) setEndDate(startDate);
   }, [startDate, endDate]);
 
-  const submitDateHandler = () => {};
+  useEffect(() => {
+    setCategoriesPercentage(getExpensesCategoriesPercentage(expenses));
+  }, [expenses]);
 
-  const doughnutData = {
-    labels: Object.keys(categoriesPercentage),
-    datasets: [{ data: Object.values(categoriesPercentage), borderWidth: 3 }],
-    backgroundColor: ARCH_COLORS,
+  const submitDateHandler = () => {
+    if (dateRandeError) setDateRangeError((prevState) => !prevState);
+    if (startDate === null || endDate === null) {
+      setDateRangeError(true);
+      return;
+    }
+    const categories = getCategoriesDataOnPeroid(expenses, startDate, endDate);
+
+    if (!categories) {
+      setDateRangeError("No expenses on given peroid of time");
+    } else setCategoriesPercentage(categories);
   };
+
+  let doughnutData;
+
+  if (!categoriesPercentage) {
+    doughnutData = {};
+  } else
+    doughnutData = {
+      labels: Object.keys(categoriesPercentage),
+      datasets: [{ data: Object.values(categoriesPercentage), borderWidth: 3 }],
+      // backgroundColor: ARCH_COLORS,
+    };
 
   const doughnutOptions = {
     color: "white",
@@ -160,6 +188,9 @@ const ExpensesDetails = () => {
           >
             Submit
           </button>
+          {dateRandeError && (
+            <h5 style={{ color: "red" }}>Choose proper date ranges.</h5>
+          )}
         </section>
         <section className={classes.expensesOptionsWrapper}>
           <h4>Select peroid of time</h4>
@@ -188,7 +219,10 @@ const ExpensesDetails = () => {
       </header>
       <div className={classes.mainContentWrapper}>
         <section className={classes.categoryPercentageWrapper}>
-          <Doughnut data={doughnutData} options={doughnutOptions} />
+          {!dateRandeError &&
+            Object.keys(categoriesPercentage).length !== 0 && (
+              <Doughnut data={doughnutData} options={doughnutOptions} />
+            )}
         </section>
         <section className={classes.expensesValueOnDate}>
           <Chart
@@ -199,7 +233,8 @@ const ExpensesDetails = () => {
         </section>
       </div>
       <p className={classes.expensesInTotal}>
-        Total value of expenses: <span>{expensesTotalValue}</span>
+        Total value of expenses:{" "}
+        <span>{Math.trunc(expensesTotalValue * 100) / 100} zł</span>
       </p>
     </>
   );

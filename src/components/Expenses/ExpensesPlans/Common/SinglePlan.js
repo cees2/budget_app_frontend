@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./SinglePlan.module.css";
 import usePlanCrud from "../../../../hooks/use-plan-crud";
-import { MONTHS } from "../../ExpensesInfo/services/GetExpensesData";
+import { MONTHS } from "../../ExpensesInfo/services/chartData";
 import ConfirmationModal from "../../../UI/ConfirmationModal";
 import ReactDOM from "react-dom";
 

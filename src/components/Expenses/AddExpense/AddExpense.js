@@ -97,8 +97,12 @@ const AddExpense = () => {
                 <option>Bills</option>
                 <option>Transportation</option>
                 <option>Education</option>
-                <option>Investments</option>
-                <option>House</option>
+                <option>Investing</option>
+                <option>Housing</option>
+                <option>Utilities</option>
+                <option>Insurance</option>
+                <option>Healthcare</option>
+                <option>Other</option>
               </select>
             </div>
             <SubmitFormButton caption="Add" />

@@ -23,27 +23,6 @@ export const MONTHS = [
   { name: "December", days: 31 },
 ];
 
-export const getExpensesCategoriesPercentage = (expenses) => {
-  const totalSumOfExpenses = getTotalSumOfExpenses(expenses);
-
-  const categoriesPercentage = {};
-
-  expenses.forEach((expense) => {
-    if (categoriesPercentage[expense.category]) {
-      categoriesPercentage[expense.category] +=
-        Math.trunc((expense.value / totalSumOfExpenses) * 10000) / 100;
-    } else
-      categoriesPercentage[expense.category] =
-        Math.trunc((expense.value / totalSumOfExpenses) * 10000) / 100;
-  });
-
-  return categoriesPercentage;
-};
-
-export const getTotalSumOfExpenses = (expenses) => {
-  return expenses.reduce((acc, curVal) => (acc += curVal.value), 0);
-};
-
 export const getExpenseDataOnPeroidOfTime = (
   expenses,
   peroid,
