@@ -1,0 +1,27 @@
+section.budgetPlansWrapper {
+  width: 50%;
+  min-height: 10rem;
+  margin: 2rem auto 0;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 0 1rem;
+}
+
+nav.budgetPlansNav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+nav.budgetPlansNav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav.budgetPlansNav ul li {
+  background-color: var(--green);
+  padding: 7px 10px;
+  border-radius: 12px;
+  line-height: 16px;
+}

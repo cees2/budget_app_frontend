@@ -11,26 +11,28 @@ import {
   ARCH_COLORS,
   getExpenseDataOnPeroidOfTime,
   getTypeOfPeroidOfTime,
-  expensesChartDataReducer
+  expensesChartDataReducer,
 } from "./services/GetExpensesData";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Selectable from "../../UI/Selectable";
 import lessThan from "../../../images/less_than.svg";
 import greaterThan from "../../../images/greater_than.svg";
+import { MONTHS } from "./services/GetExpensesData";
 
 const ExpensesDetails = () => {
   const [expenses, setExpenses] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  // const [expensesChartData, setExpensesChartData] = useState({});
-  // const [selectedTypeOfPeroid, setSelectedTypeOfPeroid] = useState("year");
-  // const [dateInformation, setDateInformation] = useState();
-  const [expensesChartData, expensesDataDispatch] = useReducer(expensesChartDataReducer, {
-    data: {},
-    selectedTypeOfPeroid: "year",
-    dateInformation: "",
-  });
+  const [expensesChartData, expensesDataDispatch] = useReducer(
+    expensesChartDataReducer,
+    {
+      data: {},
+      selectedTypeOfPeroid: "",
+      dateInformation: "",
+      typeOfDateCoutner: 0,
+    }
+  );
   const dispatch = useDispatch();
   const { getExpenses } = useExpenseCrud();
   const expensesTotalValue = getTotalSumOfExpenses(expenses);
@@ -43,7 +45,10 @@ const ExpensesDetails = () => {
       getExpenses().then((data) => {
         dispatch(expensesActions.setExpenses(data.data.expenses.reverse()));
         setExpenses(data.data.expenses);
-        expensesDataDispatch({type: "setExpensesData", payload: getExpenseDataOnPeroidOfTime(data.data.expenses, "Yearly")})
+        expensesDataDispatch({
+          type: "setExpensesData",
+          payload: getExpenseDataOnPeroidOfTime(data.data.expenses, ""),
+        });
       });
     }
   }, [expenses]);
@@ -65,11 +70,11 @@ const ExpensesDetails = () => {
   };
 
   const chartData = {
-    labels: Object.keys(expensesChartData),
+    labels: Object.keys(expensesChartData?.data),
     datasets: [
       {
         label: "Expenses value",
-        data: Object.values(expensesChartData).map((peroidOfTime) => {
+        data: Object.values(expensesChartData.data).map((peroidOfTime) => {
           if (Array.isArray(peroidOfTime))
             return peroidOfTime.reduce(
               (acc, expense) => (acc += expense.value),
@@ -82,21 +87,49 @@ const ExpensesDetails = () => {
   };
 
   const changePeroidOfTimeHandler = (selectedPeroidOfTimeType) => {
-    setExpensesChartData(
-      getExpenseDataOnPeroidOfTime(
-        expenses,
-        selectedPeroidOfTimeType,
-      )
-    );
-    setSelectedTypeOfPeroid(getTypeOfPeroidOfTime(selectedPeroidOfTimeType));
-    setDateInformation();
+    expensesDataDispatch({
+      type: "setTypeOfPeroid",
+      payload: {
+        caption: getTypeOfPeroidOfTime(selectedPeroidOfTimeType),
+        type: selectedPeroidOfTimeType,
+      },
+    });
+    if (selectedPeroidOfTimeType === "Daily") {
+      expensesDataDispatch({
+        type: "setExpensesData",
+        payload: getExpenseDataOnPeroidOfTime(
+          expenses,
+          getTypeOfPeroidOfTime(selectedPeroidOfTimeType),
+          `${MONTHS[new Date().getMonth()].name} ${new Date().getFullYear()}`
+        ),
+      });
+    } else
+      expensesDataDispatch({
+        type: "setExpensesData",
+        payload: getExpenseDataOnPeroidOfTime(
+          expenses,
+          getTypeOfPeroidOfTime(selectedPeroidOfTimeType)
+        ),
+      });
   };
 
-  const changePeroidOfTimeTypeHandler = () => {};
+  const previousPeroid = () => {
+    expensesDataDispatch({
+      type: "decrementTypeOfCoutner",
+      payload: {
+        expenses,
+      },
+    });
+  };
 
-  // const selectCaption = `Select ${peroidOfTimeRef.current?.value}`;
-
-  // console.log(selectCaption);
+  const nextPeroid = () => {
+    expensesDataDispatch({
+      type: "incrementTypeOfCoutner",
+      payload: {
+        expenses,
+      },
+    });
+  };
 
   return (
     <>
@@ -130,13 +163,17 @@ const ExpensesDetails = () => {
             options={["Yearly", "Monthly", "Daily"]}
             onSelectChange={changePeroidOfTimeHandler}
           />
-          {selectedTypeOfPeroid && (
+          {expensesChartData.selectedTypeOfPeroid && (
             <>
-              <h4>Select {selectedTypeOfPeroid}</h4>
+              <h4>Select {expensesChartData.selectedTypeOfPeroid}</h4>
               <div className={classes.peroidOfTimeNavigationWrapper}>
-                <img src={lessThan} alt="Previous" />
-                <h5>{dateInformation}</h5>
-                <img src={greaterThan} alt="Next" />
+                <div onClick={previousPeroid}>
+                  <img src={lessThan} alt="Previous" />
+                </div>
+                <h5>{expensesChartData.dateInformation}</h5>
+                <div onClick={nextPeroid}>
+                  <img src={greaterThan} alt="Next" />
+                </div>
               </div>
             </>
           )}

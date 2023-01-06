@@ -47,6 +47,7 @@ section.expensesValueOnDate {
 
 div.peroidOfTimeNavigationWrapper {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: rgb(20, 20, 20);
   padding: 0.25rem 0.5rem;

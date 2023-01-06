@@ -6,7 +6,6 @@ const Selectable = (props) => {
   const selectInputRef = useRef();
   const changeSelectHandler = () => {
     const selectInput = selectInputRef.current?.value;
-
     onSelectChange(selectInput);
   };
 

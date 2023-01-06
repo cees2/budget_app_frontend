@@ -1,21 +1,33 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Card from "../../UI/Card";
 import classes from "./AddExpense.module.css";
 import Header from "../../UI/Header";
 import UserInput from "../../UI/UserInput";
 import SubmitFormButton from "../../UI/SubmitFormButton";
-import useExpenseCrud from "../../../hooks/use-expense-crud";
 import ActionResult from "../../UI/ActionResult";
 import useActionResult from "../../../hooks/use-actionResult";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { expensesActions } from "../../../store/ExpensesSlice";
+import useExpenseCrud from "../../../hooks/use-expense-crud";
 
 const AddExpense = () => {
   const expenseNameInput = useRef();
   const expenseValueInput = useRef();
   const expenseCategoryInput = useRef();
-  const { createExpense } = useExpenseCrud();
+  const { getExpenses, createExpense } = useExpenseCrud();
   const { isActive, activate } = useActionResult();
   const [error, setError] = useState(false);
+  const expenses = useSelector((state) => state.expenses.expenses);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!expenses.length) {
+      getExpenses().then((data) => {
+        dispatch(expensesActions.setExpenses(data.data.expenses.reverse()));
+      });
+    }
+  }, []);
 
   const expAddSubmitHandler = async (e) => {
     e.preventDefault();
@@ -25,7 +37,13 @@ const AddExpense = () => {
     const expenseCategory = expenseCategoryInput.current.value;
 
     try {
-      await createExpense(expenseName, expenseValue, expenseCategory);
+      const res = await createExpense(
+        expenseName,
+        expenseValue,
+        expenseCategory
+      );
+      const updatedExpenses = [...expenses, { ...res.data.createExpense }];
+      dispatch(expensesActions.setExpenses(updatedExpenses));
     } catch (err) {
       setError(err.message);
       activate();
