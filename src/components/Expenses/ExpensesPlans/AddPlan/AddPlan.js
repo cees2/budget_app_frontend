@@ -8,9 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { plansActions } from "../../../../store/PlanSlice";
 import SubmitFormButton from "../../../UI/SubmitFormButton";
 import Header from "../../../UI/Header";
+import { Link } from "react-router-dom";
+import useActionResult from "../../../../hooks/use-actionResult";
 
 const AddPlan = () => {
   const [priority, setPriority] = useState("High");
+  const [error, setError] = useState(false);
   const plans = useSelector((state) => state.plans.plans);
   const dispatch = useDispatch();
   const { createPlan } = usePlanCrud();
@@ -18,40 +21,65 @@ const AddPlan = () => {
   const priorityChangeHandler = (selectedInput) => {
     setPriority(selectedInput);
   };
+  const { isActive, activate } = useActionResult();
 
   const formSubmitHandler = async (e) => {
-    e.preventDefault();
-    const res = await createPlan(
-      planNameInput?.current?.value,
-      priority,
-      "Active"
-    );
-    const updatedPlans = [...plans, { ...res.data.createdPlan }];
-    dispatch(plansActions.setPlans(updatedPlans));
+    try {
+      e.preventDefault();
+      const res = await createPlan(
+        planNameInput?.current?.value,
+        priority,
+        "Active"
+      );
+      const updatedPlans = [...plans, { ...res.data.createdPlan }];
+      dispatch(plansActions.setPlans(updatedPlans));
+      activate();
+    } catch (err) {
+      setError(err.message);
+      activate();
+    }
   };
 
+  const successMessage = (
+    <p className={classes.successMessage}>
+      Plan has been sussceefully added.&nbsp;
+      <Link to="/expenses/budget-plans/see-plans">
+        <span style={{ color: "aliceblue", textDecoration: "underline" }}>
+          See my plans
+        </span>
+      </Link>
+    </p>
+  );
+
   return (
-    <div className={classes.addPlanWrapper}>
-      <Header>Add new plan</Header>
-      <form onSubmit={formSubmitHandler}>
-        <UserInput
-          htmlFor="planName"
-          label="Plan name"
-          id="planName"
-          type="text"
-          inputRef={planNameInput}
-        />
-        <div className={classes.singleInput}>
-          <label htmlFor="end_date">Priority</label>
-          <Selectable
-            options={["High", "Medium", "Low"]}
-            onSelectChange={priorityChangeHandler}
-            customClass={classes.prioritySelectable}
+    <>
+      <ActionResult
+        visible={isActive.visible}
+        type={error ? "error" : "success"}
+        message={error ? error : successMessage}
+      />
+      <div className={classes.addPlanWrapper}>
+        <Header>Add new plan</Header>
+        <form onSubmit={formSubmitHandler}>
+          <UserInput
+            htmlFor="planName"
+            label="Plan name"
+            id="planName"
+            type="text"
+            inputRef={planNameInput}
           />
-        </div>
-        <SubmitFormButton caption="Add" />
-      </form>
-    </div>
+          <div className={classes.singleInput}>
+            <label htmlFor="end_date">Priority</label>
+            <Selectable
+              options={["High", "Medium", "Low"]}
+              onSelectChange={priorityChangeHandler}
+              customClass={classes.prioritySelectable}
+            />
+          </div>
+          <SubmitFormButton caption="Add" />
+        </form>
+      </div>
+    </>
   );
 };
 

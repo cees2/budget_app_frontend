@@ -54,7 +54,7 @@ const AddExpense = () => {
 
   const successMessage = (
     <p className={classes.successMessage}>
-      Task has been sussceefully added.
+      Expense has been sussceefully added.
       <Link to="/expenses/my-expenses">
         <span> See my expenses</span>
       </Link>
