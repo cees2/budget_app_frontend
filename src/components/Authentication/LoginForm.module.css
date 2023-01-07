@@ -36,3 +36,19 @@ section.loginSection form a {
   display: block;
   text-align: center;
 }
+
+@media (max-width: 992px) {
+  div.loginWrapper {
+    width: 75%;
+  }
+  section.loginSection {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  div.loginWrapper {
+    width: 100%;
+    border: none;
+  }
+}

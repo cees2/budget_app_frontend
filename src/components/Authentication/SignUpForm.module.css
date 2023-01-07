@@ -15,3 +15,19 @@ section.signUpSection {
 .singleInput label {
   display: block;
 }
+
+@media (max-width: 992px) {
+  div.signUpWrapper {
+    width: 75%;
+  }
+  section.signUpSection {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  div.signUpWrapper {
+    width: 100%;
+    border: none;
+  }
+}
