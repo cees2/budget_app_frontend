@@ -22,3 +22,15 @@ div.addPlanWrapper {
 .singleInput label {
   margin-bottom: 0.5rem;
 }
+
+@media (max-width: 992px) {
+  div.addPlanWrapper {
+    width: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  div.addPlanWrapper {
+    width: 100%;
+  }
+}

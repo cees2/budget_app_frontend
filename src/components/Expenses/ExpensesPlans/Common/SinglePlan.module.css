@@ -19,12 +19,6 @@ div.planInfos {
   word-break: break-all;
 }
 
-div.plansListItemContent {
-}
-
-div.plansButtons {
-}
-
 h2.planName {
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
@@ -59,4 +53,32 @@ button.completedPlanButton:hover {
 
 button.singleButton {
   justify-content: center;
+}
+
+@media (max-width: 992px) {
+  li.plansListItem {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  h2.planName {
+    letter-spacing: 0;
+    font-size: 16px;
+  }
+
+  p.planDate {
+    font-size: 14px;
+  }
+
+  div.plansButtons {
+    flex-direction: column;
+  }
+
+  button.deletePlanButton,
+  button.completedPlanButton {
+    width: 50%;
+    padding: 5px 10px;
+    margin: 0 auto 0.5rem;
+  }
 }

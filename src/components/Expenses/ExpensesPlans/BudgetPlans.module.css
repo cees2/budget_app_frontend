@@ -29,3 +29,27 @@ nav.budgetPlansNav ul li {
 nav.budgetPlansNav ul li:hover {
   background-color: var(--greenBlue);
 }
+
+@media (max-width: 992px) {
+  section.budgetPlansWrapper {
+    width: 100%;
+    border: none;
+  }
+}
+
+@media (max-width: 576px) {
+  section.budgetPlansWrapper {
+    width: 100%;
+    border: none;
+    margin: 0;
+  }
+
+  nav.budgetPlansNav ul {
+    flex-direction: column;
+  }
+
+  nav.budgetPlansNav ul li {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}
