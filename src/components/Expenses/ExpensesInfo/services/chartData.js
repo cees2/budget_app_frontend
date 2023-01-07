@@ -1,6 +1,6 @@
 export const MONTHS = [
   { name: "January", days: 31 },
-  { name: "February", days: 28 }, // do poprawy !!!!
+  { name: "February", days: 28 },
   { name: "March", days: 31 },
   { name: "April", days: 30 },
   { name: "May", days: 31 },
@@ -51,7 +51,7 @@ export const getExpenseDataOnPeroidOfTime = (
       });
       const dateMonthEnd =
         new Date(targetDate).getTime() +
-        1000 * 60 * 60 * 24 * MONTHS[indexOfMonth]?.days; // do poprawy: luty(przestepny)
+        1000 * 60 * 60 * 24 * MONTHS[indexOfMonth]?.days;
       for (let i = 1; i <= MONTHS[indexOfMonth]?.days; i++) data[i] = 0;
       expenses.forEach((expense) => {
         const expenseDate = new Date(expense.dateCreated);

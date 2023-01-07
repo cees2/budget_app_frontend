@@ -1,23 +1,24 @@
-// do poprawy: Czy kazdy typ sortowania ma miec swoja implementacje, sprawdzic jak bylo w portfolio na githubie
-
 const sortExpenses = (expenses, typeOfSorting, arrowIsUp) => {
   const allExpenses = [...expenses];
-  const sortedExpenses = expenses
-    .map((expense) => expense[typeOfSorting])
-    .sort()
-    .flatMap((expenseDetail) => {
-      const foundExpense = allExpenses.find(
-        (expense) => expense[typeOfSorting] === expenseDetail
-      );
-      let indexOfExpense;
-      allExpenses.forEach((expense, i) => {
-        if (foundExpense.dateCreated === expense.dateCreated)
-          indexOfExpense = i;
-      });
+  let sortedExpenses = expenses.map((expense) => expense[typeOfSorting]);
 
-      allExpenses.splice(indexOfExpense, 1);
-      return foundExpense;
+  if (typeOfSorting === "value") {
+    sortedExpenses = sortedExpenses.sort((a, b) => (arrowIsUp ? a - b : a + b));
+  } else {
+    sortedExpenses = sortedExpenses.sort();
+  }
+  sortedExpenses = sortedExpenses.flatMap((expenseDetail) => {
+    const foundExpense = allExpenses.find(
+      (expense) => expense[typeOfSorting] === expenseDetail
+    );
+    let indexOfExpense;
+    allExpenses.forEach((expense, i) => {
+      if (foundExpense.dateCreated === expense.dateCreated) indexOfExpense = i;
     });
+
+    allExpenses.splice(indexOfExpense, 1);
+    return foundExpense;
+  });
   return arrowIsUp ? sortedExpenses : sortedExpenses.reverse();
 };
 
