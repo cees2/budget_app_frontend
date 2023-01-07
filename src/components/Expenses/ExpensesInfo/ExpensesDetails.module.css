@@ -122,3 +122,58 @@ p.expensesInTotal {
   margin-left: 1rem;
   font-weight: 800;
 }
+
+.singleDateInput input {
+  border-radius: 6px;
+  background-color: rgb(73, 73, 73);
+  border-bottom: 1px solid var(--green);
+}
+
+@media (max-width: 992px) {
+  div.mainContentWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 15%;
+  }
+
+  .categoryPercentageWrapper {
+    margin-bottom: 3rem;
+  }
+  .expensesInTotal {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  div.mainContentWrapper {
+    padding: 0;
+  }
+
+  section.expensesOptionsWrapper {
+    margin: 1rem 0 0;
+  }
+
+  .expInfoHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .expInfoHeader section.dateWrapper {
+    width: 100%;
+    border: none;
+  }
+
+  .singleDateInput {
+    width: 100%;
+  }
+
+  .singleDateInput input {
+    width: 100%;
+  }
+
+  button.submitDateRange {
+    margin: 1rem 0;
+    width: 100%;
+    background-color: var(--green);
+  }
+}

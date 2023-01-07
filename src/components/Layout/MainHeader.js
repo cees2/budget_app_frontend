@@ -10,7 +10,7 @@ import hamburger from "../../images/hamburger.svg";
 import leftArrow from "../../images/left_arrow.svg";
 
 const MainHeader = () => {
-  const [isHamburgerActive, setIsHamburgerActive] = useState(0); // 0--> hidden, 1--> active
+  const [isHamburgerActive, setIsHamburgerActive] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
 
