@@ -1,17 +1,35 @@
 .actionResultWrapper {
-  width: 30%;
   position: fixed;
   left: 50%;
+  top: 0;
   transform: translate(-50%, -100%);
-  background-color: #fff;
+  background-color: var(--backgroundColor);
   transition: 0.5s;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0.5rem 0;
 }
 
-.active {
-  top: 50%;
+.visible {
+  top: 20%;
+}
+
+.error {
+  border: 2px solid var(--errorRed);
+}
+
+.success {
+  border: 2px solid var(--greenBlue);
 }
 
 .actionResultWrapper img {
   width: 30px;
   height: 30px;
+  margin-left: 0.5rem;
+}
+
+.actionResultMessage {
+  font-weight: 400;
+  margin: 0 0.5rem 0 1rem;
 }

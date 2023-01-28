@@ -1,5 +1,24 @@
 .expensesListWrapper {
-  width: 80%;
-  margin: 5rem auto 0;
-  background-color: var(--lightGreen);
+  width: 60%;
+  height: calc(100vh - 2 * var(--headerHeight));
+  margin: calc(var(--headerHeight) / 2) auto 0;
+  background-color: inherit;
+  box-shadow: none;
+}
+
+ul.expensesList {
+  list-style-type: none;
+}
+
+@media (max-width: 992px) {
+  .expensesListWrapper {
+    width: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .expensesListWrapper {
+    width: 100%;
+    border: none;
+  }
 }

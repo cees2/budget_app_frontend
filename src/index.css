@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -20,10 +19,13 @@
   --lightGreen: #038c73;
   --greenBlue: #36bfb1;
   --bright: #f2e3d5;
+  --errorRed: rgb(219, 0, 0);
+
+  --headerHeight: 4rem;
 }
 
 body {
   background-color: var(--backgroundColor);
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Lato", sans-serif;
   color: var(--bright);
 }

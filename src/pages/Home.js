@@ -1,8 +1,8 @@
 import React from "react";
 import HomePage from "../components/Home/HomePage";
 
-const Home = () => {
-  return <HomePage />;
+const Home = (props) => {
+  return <HomePage loggedIn={props.loggedIn} />;
 };
 
 export default Home;

@@ -1,0 +1,63 @@
+.expenseItemWrapper {
+  border-radius: 10px;
+  background-color: var(--green);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 1rem;
+}
+
+section.expenseInfoWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+button.deleteExpenseButton {
+  align-self: center;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(221, 62, 62);
+  color: white;
+  border: none;
+}
+
+button.deleteExpenseButton:hover {
+  cursor: pointer;
+}
+
+div.details h2.expenseName {
+  margin-bottom: 1rem;
+}
+
+div.valueInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+div.valueInfo h2.price {
+  margin-bottom: 1rem;
+}
+
+div.details {
+  flex-basis: 50%;
+}
+
+@media (max-width: 992px) {
+  section.expenseInfoWrapper {
+    padding: 1rem;
+  }
+
+  div.details h2.expenseName,
+  div.valueInfo h2.price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .expensesListWrapper {
+    width: 100%;
+    border: none;
+  }
+}

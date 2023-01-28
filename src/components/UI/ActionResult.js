@@ -4,11 +4,11 @@ import checkMark from "../../images/check_mark.svg";
 import error from "../../images/error.svg";
 
 const ActionResult = (props) => {
-  const { type, caption, active } = props;
+  const { type, message, visible } = props;
 
   const resultClasses = `${classes.actionResultWrapper} ${
-    active ? classes.active : ""
-  }`;
+    visible ? classes.visible : ""
+  } ${type === "error" ? classes.error : classes.success}`;
 
   return (
     <div className={resultClasses}>
@@ -16,7 +16,7 @@ const ActionResult = (props) => {
         src={type === "success" ? checkMark : error}
         alt={type === "success" ? "success" : "error"}
       />
-      <p>{caption}</p>
+      <h4 className={classes.actionResultMessage}>{message}</h4>
     </div>
   );
 };

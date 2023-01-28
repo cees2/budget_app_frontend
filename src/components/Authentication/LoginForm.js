@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Card from "../UI/Card";
 import classes from "./LoginForm.module.css";
 import Header from "../UI/Header";
@@ -18,6 +18,7 @@ const LoginForm = () => {
   const passwordInputRef = useRef();
   const history = useHistory();
   const { isActive, activate } = useActionResult();
+  const [error, setError] = useState("");
 
   const loginSubmitHandler = async (e) => {
     e.preventDefault();
@@ -35,17 +36,19 @@ const LoginForm = () => {
           password,
         },
       });
-
-      dispatch(authActions.setToken(data.token));
+      dispatch(
+        authActions.loginUser({ token: data.token, userId: data.data.user._id })
+      );
       history.replace("/home");
     } catch (err) {
+      setError(err.message);
       activate();
     }
   };
 
   return (
     <>
-      {isActive && <ActionResult />}
+      <ActionResult visible={isActive.visible} type="error" message={error} />
       <Card class={classes.loginWrapper}>
         <Header>Log into your account</Header>
         <section className={classes.loginSection}>

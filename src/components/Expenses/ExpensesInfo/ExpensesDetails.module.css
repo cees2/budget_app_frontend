@@ -1,0 +1,180 @@
+.expInfoWrapper {
+  width: 80%;
+  margin: 5rem auto 0;
+  background-color: var(--backgroundColor);
+  border: none;
+}
+
+.expInfoHeader {
+  padding: 1rem;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+button.submitDateRange {
+  padding: 4px 12px;
+  margin-top: 7.5px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  background-color: var(--greenBlue);
+  transition: 0.25s;
+}
+
+button.submitDateRange:hover {
+  cursor: pointer;
+  background-color: var(--green);
+}
+
+.expInfoHeader section.dateWrapper {
+  width: 50%;
+  border-right: 1px solid white;
+}
+
+.headersCaption {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+div.mainContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: flex-end;
+}
+
+.peroidOfTimeSelectable {
+  border-radius: 6px;
+  outline: none;
+  padding: 0.15rem 0.5rem;
+  background-color: var(--lightGreen);
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+section.categoryPercentageWrapper {
+  flex-basis: 30%;
+}
+
+section.expensesOptionsWrapper {
+  margin-left: 1rem;
+}
+
+section.expensesValueOnDate {
+  flex-basis: 50%;
+}
+
+.expensesValuesChart {
+  width: 100%;
+}
+
+h4.selectPeroidOfTime {
+  margin-bottom: 0.5rem;
+}
+
+div.peroidOfTimeNavigationWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--green);
+  border-radius: 6px;
+}
+
+div.peroidOfTimeNavigationWrapper img {
+  width: 10px;
+  height: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper div:hover {
+  cursor: pointer;
+  background-color: var(--greenBlue);
+}
+
+div.peroidOfTimeNavigationWrapper img:first-child {
+  margin-right: 10px;
+}
+
+div.peroidOfTimeNavigationWrapper img:last-child {
+  margin-left: 10px;
+}
+
+div.arrow {
+  display: flex;
+  padding: 0.5rem 0;
+}
+
+div.arrow:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+div.arrow:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+p.expensesInTotal {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-weight: 800;
+}
+
+.singleDateInput input {
+  border-radius: 6px;
+  background-color: rgb(73, 73, 73);
+  border-bottom: 1px solid var(--green);
+  color: white;
+}
+
+@media (max-width: 992px) {
+  div.mainContentWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 15%;
+  }
+
+  .categoryPercentageWrapper {
+    margin-bottom: 3rem;
+  }
+  .expensesInTotal {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  div.mainContentWrapper {
+    padding: 0;
+  }
+
+  section.expensesOptionsWrapper {
+    margin: 1rem 0 0;
+  }
+
+  .expInfoHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .expInfoHeader section.dateWrapper {
+    width: 100%;
+    border: none;
+  }
+
+  .singleDateInput {
+    width: 100%;
+  }
+
+  .singleDateInput input {
+    width: 100%;
+  }
+
+  button.submitDateRange {
+    margin: 1rem 0;
+    width: 100%;
+    background-color: var(--green);
+  }
+}

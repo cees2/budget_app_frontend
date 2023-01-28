@@ -1,0 +1,8 @@
+ul.plansList {
+  list-style-type: none;
+}
+
+.seePlansHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
