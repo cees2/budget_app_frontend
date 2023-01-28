@@ -127,6 +127,7 @@ p.expensesInTotal {
   border-radius: 6px;
   background-color: rgb(73, 73, 73);
   border-bottom: 1px solid var(--green);
+  color: white;
 }
 
 @media (max-width: 992px) {

@@ -18,10 +18,10 @@ const BudgetPlans = () => {
             <li>See my plans</li>
           </Link>
           <Link to={`/expenses/budget-plans/completed-plans`}>
-            <li>CompletedPlans</li>
+            <li>Completed Plans</li>
           </Link>
           <Link to={`/expenses/budget-plans/incompleted-plans`}>
-            <li>IncompletedPlans</li>
+            <li>Incompleted Plans</li>
           </Link>
         </ul>
       </nav>
